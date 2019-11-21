@@ -14,3 +14,18 @@ function generaBombe(min, max) {
     var random = Math.floor(Math.random()* (max-min+1))+ min;
     return random;
 }
+var esplosione = false;
+for (var i = 0; i < 84 && esplosione == false ; i++) {
+    var sceltaUtente = parseInt(prompt("Scrivi un numero da 1 a 100"));
+    for (var i = 0; i < listaBombe.length; i++) {
+        bombaInesplosa = listaBombe[i];
+        if (sceltaUtente == bombaInesplosa) {
+            esplosione = true;
+        }
+    }
+}
+if (esplosione) {
+    console.log("Hai perso");
+} else {
+    console.log("hai vinto");
+}
