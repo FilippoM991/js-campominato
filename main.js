@@ -1,7 +1,12 @@
 var listaBombe = [];
-for (var i = 0; i < 15; i++) {
-    var bomba = generaBombe(1, 100)
-    listaBombe.push(bomba)
+// var numero_iterazioni = 0;
+while(listaBombe.length < 16) {
+    var bomba = generaBombe(1, 100);
+    if(!listaBombe.includes(bomba)) {
+        listaBombe.push(bomba);
+    }
+    // numero_iterazioni++;
+    // console.log('numero iterazioni: ' + numero_iterazioni);
 }
 console.log(listaBombe);
 
