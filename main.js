@@ -17,13 +17,11 @@ function generaBombe(min, max) {
 var esplosione = false;
 for (var i = 0; i < 84 && esplosione == false ; i++) {
     var sceltaUtente = parseInt(prompt("Scrivi un numero da 1 a 100"));
-    for (var i = 0; i < listaBombe.length; i++) {
-        bombaInesplosa = listaBombe[i];
-        if (sceltaUtente == bombaInesplosa) {
+        if (listaBombe.includes(sceltaUtente)) {
             esplosione = true;
         }
-    }
 }
+
 if (esplosione) {
     console.log("Hai perso");
 } else {
