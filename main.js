@@ -32,15 +32,23 @@ function generaBombe(min, max) {
 // creo var che si incrementerà ad ogni ciclo per sapere quanti tentativi ci sono stati
 var numeroTentativi = 0;
 var esplosione = false;
+var numeriInseriti = [];
 // utilizzo funzione per rendere più generico tentativiPossibili
 var tentativiPossibili = numeroMaxTentativi();
 // uso ciclo for perchè..mi piace controllarli, w la variabile sentinella
 for (var i = 0; i < tentativiPossibili && esplosione == false ; i++) {
     var sceltaUtente = parseInt(prompt("Scrivi un numero da 1 a " + numeroMax ));
-    numeroTentativi++;
-    if (listaBombe.includes(sceltaUtente)) {
-        esplosione = true;
-        // se la variabile diventa true si ferma tutto
+    if(!isNaN(sceltaUtente) && sceltaUtente >=1 && sceltaUtente<=100 && !numeriInseriti.includes(sceltaUtente) ){
+        if (listaBombe.includes(sceltaUtente)) {
+            esplosione = true;
+            // se la variabile diventa true si ferma tutto
+
+        } else {
+            numeroTentativi++;
+            numeriInseriti.push(sceltaUtente);
+        }
+    } else {
+        alert("Numero non valido");
     }
 }
 // funzione che rende più generica e scalibile il numero massimo di tentativi positivi che può fare l ' utente'
@@ -56,5 +64,5 @@ if (esplosione) {
     console.log("Hai appena usato tutta la fortuna che ti spettava in questa vita");
     document.writeln("Hai appena usato tutta la fortuna che ti spettava in questa vita");
 }
-console.log("Numero passi fatti senza morire: " + (numeroTentativi - 1) );
-document.writeln("numero passi fatti senza morire: " + (numeroTentativi - 1));
+console.log("Numero passi fatti senza morire: " + numeroTentativi );
+document.writeln("numero passi fatti senza morire: " + numeroTentativi);
